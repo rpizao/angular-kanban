@@ -15,7 +15,6 @@ import { CardReadonlyComponent } from './components/card-readonly/card-readonly.
 import { ReactiveFormsModule } from '@angular/forms';
 import { TokenService } from './services/token.service';
 import { TokenIntercept } from './intercepts/token-intercept';
-import { StoreModule } from '@ngrx/store';
 import { MessageService } from './services/message/message.service';
 
 @NgModule({
@@ -28,7 +27,7 @@ import { MessageService } from './services/message/message.service';
     MatCardModule, MatIconModule, MatInputModule, MatDialogModule, // Material Modules
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }), // Markup Modules
-    ReactiveFormsModule, StoreModule.forRoot({}, {})
+    ReactiveFormsModule
   ],
   providers: [
     TokenService,

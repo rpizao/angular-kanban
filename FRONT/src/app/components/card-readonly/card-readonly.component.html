@@ -6,7 +6,7 @@
     </button>
   </mat-card-title>
   <mat-card-content>
-    {{data?.conteudo}}
+    <markdown [data]="data?.conteudo"></markdown>
   </mat-card-content>
   <mat-card-actions>
     <button *ngIf="hasPreviousOption()" class="normal clickable left" aria-label="Anterior" (click)="previous()">

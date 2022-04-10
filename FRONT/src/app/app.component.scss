@@ -28,7 +28,6 @@
   height: 100%;
   top: 1em;
   margin: 1em;
-  background: #e0e4e3;
   width: 33%;
   min-width: 275px;
 }
@@ -48,18 +47,24 @@
 }
 
 .list.todo {
+  background: #e0e4e3;
+
   mat-card-subtitle {
     background: darkgray;
   }
 }
 
 .list.doing {
+  background: lightgreen;
+
   mat-card-subtitle {
     background: darkseagreen;
   }
 }
 
 .list.done {
+  background: lightblue;
+
   mat-card-subtitle {
     background: blue;
   }

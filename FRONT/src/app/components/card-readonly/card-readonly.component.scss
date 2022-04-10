@@ -1,1 +1,10 @@
 @import url(../card-default.scss);
+
+.card ::ng-deep {
+  img {
+    max-width: 100% !important;
+    display: block !important;
+  }
+}
+
+

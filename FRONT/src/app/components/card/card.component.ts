@@ -40,7 +40,7 @@ export class CardComponent implements OnInit {
   confirm(){
     if(FormUtils.isInvalid(this.formulario)) return;
 
-    const updated = {...this.formulario.value, lista: this._data.lista};
+    const updated = {...this.formulario.value, lista: this._data.lista, id: this._data.id};
     this.messageService.addOrUpdate({...updated});
   }
 
