@@ -1,5 +1,4 @@
-import { ViewportScroller } from '@angular/common';
-import { AfterContentChecked, AfterViewChecked, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { Card } from './models/card';
 import { CardType } from './models/enums/card-type';
 import { CardService } from './services/card.service';
@@ -11,25 +10,18 @@ import { HashUtils } from './utils/hash.utils';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewChecked {
+export class AppComponent {
 
   @ViewChildren('todoItem', { read: ElementRef }) private todoListContainer?: QueryList<ElementRef>;
 
-  constructor(private cardService: CardService, private messageService: MessageService, private viewportScroller: ViewportScroller) {
+  constructor(private cardService: CardService, private messageService: MessageService, private changeDetectorRef: ChangeDetectorRef) {
     this.loadingCardList();
     this.messageService.onMessage().subscribe(message => this.stateChangeComponent(message));
-  }
-  ngAfterViewChecked(): void {
-    this.scrollToEnd();
   }
 
   private _listaTodo: Card[] = [];
   private _listaDoing: Card[] = [];
   private _listaDone: Card[] = [];
-
-  ngOnInit(): void {
-
-  }
 
   get listaTodo(): Card[] {
     return this._listaTodo;
@@ -44,14 +36,14 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   addTodo() {
-    this._listaTodo.push({...this.cardService.newInstance(), code: HashUtils.hash()});
-  }
-
-  ngAfterContentChecked(): void {
-
+    let newCard = {...this.cardService.newInstance(), code: HashUtils.hash()};
+    this._listaTodo.push(newCard);
+    this.messageService.edit(newCard);
   }
 
   private scrollToEnd(){
+    this.changeDetectorRef.detectChanges();
+
     if(!this.todoListContainer) return;
     const lastElement = this.todoListContainer.last;
     if(lastElement) lastElement.nativeElement.scrollIntoView({ behavior: "smooth" });
@@ -73,21 +65,19 @@ export class AppComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  private openCardToEdition(card: Card) {
+    card.editavel = true;
+    this.scrollToEnd();
+  }
+
   private cancelCardEdition(card: Card) {
-    if(!card.id) {
-      this.clearCardEditionByCode(card);
-      return;
-    }
-    card.editavel = false;
+    if(card.id) card.editavel = false;
+    else this.clearCardEditionByCode(card);
   }
 
   private addOrUpdateAndRefreshList(card: Card){
     if(card.id) this.cardService.update(card, sucesso => this.loadingCardList());
     else this.cardService.add(card, sucesso => this.loadingCardList());
-  }
-
-  private openCardToEdition(card: Card) {
-    card.editavel = true;
   }
 
   private deleteAndRefreshList(card: Card){

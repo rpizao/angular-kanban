@@ -11,6 +11,10 @@ main {
 }
 textarea { resize: none !important; }
 
+* {
+  scroll-behavior: smooth;
+}
+
 // TODO: Opção de código para o tema escuro?
 
 @mixin theme($theme: DarkGray) {

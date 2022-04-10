@@ -19,8 +19,7 @@ export class CardService extends HttpResourceService<Card> {
 
   newInstance(): Card {
     return {
-      lista: CardType.ToDo,
-      editavel: true
+      lista: CardType.ToDo
     } as Card;
   }
 
