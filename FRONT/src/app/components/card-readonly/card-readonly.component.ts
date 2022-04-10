@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Card } from 'src/app/modelos/card';
+import { Card } from 'src/app/models/card';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'app-card-readonly',
@@ -11,7 +12,7 @@ export class CardReadonlyComponent implements OnInit {
   @Input()
   data: Card | undefined;
 
-  constructor() { }
+  constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
   }

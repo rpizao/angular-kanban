@@ -1,25 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { instanceToPlain } from 'class-transformer';
 import { Observable } from 'rxjs';
-import { Entidade } from 'src/app/modelos/entidade';
-import { TokenService } from 'src/app/servicos/token.service';
+import { Entity } from 'src/app/models/entidade';
+import { TokenService } from 'src/app/services/token.service';
 import { environment } from 'src/environments/environment';
-import { AlertService } from '../alertas/alert.service';
+import { AlertService } from '../alerts/alert.service';
 
-export abstract class HttpGenericoService<T extends Entidade> {
+export abstract class HttpResourceService<T extends Entity> {
 
   protected useLoading: boolean = true;
 
   constructor(private client: HttpClient, private alert: AlertService, private tokenService: TokenService){}
 
-  protected abstract get novaInstancia(): T;
+  protected abstract get newInstance(): T;
 
   protected getUrl():string{
     return environment.apiBaseUrl;
   }
 
   protected post<R>(partialUrl: string, body: any, then:(result: R) => void, fail?:(error: any) => void): void {
-    let completeBody = this.novaInstancia;
+    let completeBody = this.newInstance;
     completeBody = {...body};
     this.prepararRequest(this.client.post<R>(this.getUrl() + partialUrl, instanceToPlain(completeBody)), then, fail);
   }

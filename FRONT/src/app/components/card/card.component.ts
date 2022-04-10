@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Card } from 'src/app/modelos/card';
-import { CardService } from 'src/app/servicos/card.service';
+import { Card } from 'src/app/models/card';
+import { CardService } from 'src/app/services/card.service';
+import { MessageService } from 'src/app/services/message/message.service';
 
 @Component({
   selector: 'app-card',
@@ -11,44 +12,43 @@ import { CardService } from 'src/app/servicos/card.service';
 })
 export class CardComponent implements OnInit {
 
-  @Input()
-  private _data: Card | undefined;
+  private _data: Card = {} as Card;
 
   formulario: FormGroup;
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder, private cardService: CardService) {
+  constructor(public dialog: MatDialog, private fb: FormBuilder, private cardService: CardService, private messageService: MessageService) {
     this.formulario = this.fb.group({
       titulo: ['', Validators.required],
       conteudo: ['', Validators.required]
     });
   }
 
-  exibirDicasMarkdown() {
-    this.dialog.open(DicasPreenchimentoDialog);
+  showMarkdownTips() {
+    this.dialog.open(MarkdownTipsDialog);
   }
 
   ngOnInit(): void {
   }
 
   @Input()
-  set data(data: Card | undefined) {
+  set data(data: Card) {
     this._data = data;
-    this.formulario.patchValue({data});
+    this.formulario.patchValue({ ...this._data });
   }
 
-  get data(): Card| undefined {
-    return this._data;
+  confirm(){
+    this.cardService.add(this.formulario.value, r => this.messageService.update({...r, codigo: this._data.codigo}));
   }
 
-  criarCard(){
-    this.cardService.criar()
+  cancel(){
+    this.messageService.clear(this._data);
   }
 
 }
 
 
 @Component({
-  selector: 'dicas-preenchimento-dialog',
+  selector: 'markdown-tips-dialog',
   template: `
     <h1 mat-dialog-title>Dicas de formatação</h1>
     <div class="side-by-side" mat-dialog-content>
@@ -56,7 +56,7 @@ export class CardComponent implements OnInit {
     </div>
   `,
 })
-export class DicasPreenchimentoDialog {
+export class MarkdownTipsDialog {
   dicas = `
   Cabeçalho
   1.1: Preparação

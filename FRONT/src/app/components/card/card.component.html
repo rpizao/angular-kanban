@@ -9,17 +9,17 @@
   </mat-form-field>
 
   <div class="help">
-    <button type='button' class="clickable" matSuffix mat-icon-button aria-label="Dicas de formatação" (click)="exibirDicasMarkdown()">
+    <button type='button' class="clickable" matSuffix mat-icon-button aria-label="Dicas de formatação" (click)="showMarkdownTips()">
       <mat-icon aria-hidden="false">help_outline</mat-icon>
       Formatação
     </button>
   </div>
 
   <mat-card-actions>
-    <button type='button' class="normal clickable left" aria-label="Cancelar">
+    <button type='button' class="normal clickable left" aria-label="Cancelar" (click)="cancel()">
       <mat-icon>cancel</mat-icon>
     </button>
-    <button type='button' class="primary clickable right" aria-label="Salvar">
+    <button type='button' class="primary clickable right" aria-label="Salvar" (click)="confirm()">
       <mat-icon>check_circle</mat-icon>
     </button>
   </mat-card-actions>

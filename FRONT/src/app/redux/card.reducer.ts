@@ -1,5 +1,5 @@
 import { createReducer, Action } from 'typed-reducer';
-import { Card } from '../modelos/card';
+import { Card } from '../models/card';
 import { AddCardAction, DeleteCardAction, UpdateCardAction } from './card.actions';
 
 class CardReducer {

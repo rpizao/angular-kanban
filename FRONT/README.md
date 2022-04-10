@@ -8,9 +8,12 @@ Angular Material | 13.3.2
 class-transformer (https://www.npmjs.com/package/class-transformer)
 Dompurify (https://www.npmjs.com/package/dompurify)
 Ngx-markdown (https://www.npmjs.com/package/ngx-markdown)
+crypto ()
 
 **Importante
-Não utilizar IE11 (descontinuado nesta versão) e Node 12.20.0 ou posterior.
+Utilizar >IE11 (versão 11 descontinuada nesta versão) e Node 12.20.0 ou posterior.
 
 ## Como rodar o projeto
-Clone o 
+Clone o repositório do endereço https://github.com/rpizao/angular-kanban
+Acesse a pasta FRONT e execute npm install
+Execute npm start
