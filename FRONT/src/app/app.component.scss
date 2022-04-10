@@ -1,3 +1,21 @@
+@media only screen and (max-height: 700px) {
+  .list > mat-card-content {
+    height: 75% !important;
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  .list > mat-card-content {
+    height: 70% !important;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .list > mat-card-content {
+    height: 60% !important;
+  }
+}
+
 .toolbar {
   position: absolute;
   top: 0;
@@ -41,9 +59,8 @@
 }
 
 .list > mat-card-content {
-  height: 83%;
+  height: 78%;
   overflow: hidden auto;
-  padding: 0 0.2em 0 0;
 }
 
 .list.todo {

@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TokenService } from './services/token.service';
 import { TokenIntercept } from './intercepts/token-intercept';
 import { MessageService } from './services/message/message.service';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { MessageService } from './services/message/message.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatCardModule, MatIconModule, MatInputModule, MatDialogModule, // Material Modules
+    MatCardModule, MatIconModule, MatInputModule, MatDialogModule, MatToolbarModule, // Material Modules
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }), // Markup Modules
     ReactiveFormsModule

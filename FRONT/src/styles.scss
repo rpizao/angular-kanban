@@ -8,6 +8,7 @@ main {
   max-width: 100%;
   align-items: center;
   height: 100%;
+  overflow-y: hidden;
 }
 textarea { resize: none !important; }
 
