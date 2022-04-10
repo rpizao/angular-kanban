@@ -1,0 +1,28 @@
+.card {
+  background: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+.card mat-card-title {
+  border-radius: 20px;
+  width: fit-content;
+  color: #4D4D4D;
+  font-weight: 500;
+}
+
+.card mat-card-actions {
+  height: 2em;
+}
+
+.card button {
+  border: none;
+  background: none;
+}
+
+.card:not(:first-of-type) {
+  margin-top: 1em;
+}

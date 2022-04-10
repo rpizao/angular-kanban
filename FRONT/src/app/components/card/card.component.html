@@ -1,0 +1,27 @@
+<mat-card [formGroup]="formulario" class="card editable">
+  <mat-form-field appearance="fill">
+    <mat-label>Título</mat-label>
+    <input matInput type="text" formControlName="titulo" >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Conteúdo</mat-label>
+    <textarea rows="5" matInput type="text" formControlName="conteudo"></textarea>
+  </mat-form-field>
+
+  <div class="help">
+    <button type='button' class="clickable" matSuffix mat-icon-button aria-label="Dicas de formatação" (click)="exibirDicasMarkdown()">
+      <mat-icon aria-hidden="false">help_outline</mat-icon>
+      Formatação
+    </button>
+  </div>
+
+  <mat-card-actions>
+    <button type='button' class="normal clickable left" aria-label="Cancelar">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button type='button' class="primary clickable right" aria-label="Salvar">
+      <mat-icon>check_circle</mat-icon>
+    </button>
+  </mat-card-actions>
+
+</mat-card>

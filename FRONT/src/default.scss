@@ -1,0 +1,37 @@
+.side-by-side {
+  display: flex;
+}
+
+.side-by-side:only-child {
+  flex: 1;
+  margin: 1em;
+}
+
+.clickable {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.right {
+  right: 0.8em;
+  position: absolute;
+}
+
+.left {
+  left: 0.8em;
+  position: absolute;
+}
+
+.center {
+  left: 45%;
+  position: absolute;
+}
+
+.danger {
+  color: red;
+}
+
+.primary {
+  color: #1976d2;
+}

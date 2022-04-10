@@ -1,0 +1,28 @@
+@import url(default.scss);
+
+html, body { height: 90%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; scroll-padding: 10px; }
+main {
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 100%;
+  align-items: center;
+  height: 100%;
+}
+textarea { resize: none !important; }
+
+// TODO: Opção de código para o tema escuro?
+
+@mixin theme($theme: DarkGray) {
+  color: rgba($theme, 0.9);
+}
+
+.normal {
+  @include theme;
+}
+.danger {
+  @include theme($theme: Red);
+}
+.primary {
+  @include theme($theme: Blue);
+}

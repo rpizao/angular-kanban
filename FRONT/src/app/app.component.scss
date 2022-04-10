@@ -1,0 +1,90 @@
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.toolbar button {
+  color: white;
+  padding-right: 1em;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.list {
+  height: 100%;
+  top: 1em;
+  margin: 1em;
+  background: #e0e4e3;
+  width: 33%;
+}
+
+.list > mat-card-subtitle {
+  border-radius: 10px;
+  padding: 0.5em;
+  width: fit-content;
+  color: white;
+  font-weight: 500;
+}
+
+.list > mat-card-content {
+  height: 83%;
+  overflow: hidden auto;
+  padding: 0 0.2em 0 0;
+}
+
+.list.todo {
+  mat-card-subtitle {
+    background: darkgray;
+  }
+}
+
+.list.doing {
+  mat-card-subtitle {
+    background: darkseagreen;
+  }
+}
+
+.list.done {
+  mat-card-subtitle {
+    background: blue;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  padding-left: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: lightgrey;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: darkgray;
+}
+
+.add-card {
+  text-align: center;
+  padding: 1em 0 1em 0;
+}
+
+.add-card mat-icon {
+  vertical-align: middle;
+  font-size: 1.5em;
+}

@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <mat-card-title>
+    {{data?.titulo}}
+    <button class="clickable right" matSuffix mat-icon-button aria-label="Editar">
+      <mat-icon>edit_note</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content>
+    {{data?.conteudo}}
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="normal clickable left" aria-label="Voltar para TODO">
+      <mat-icon>restart_alt</mat-icon>
+    </button>
+    <button class="danger clickable center" aria-label="Deletar">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button class="primary clickable right" aria-label="Deletar">
+      <mat-icon>start</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
