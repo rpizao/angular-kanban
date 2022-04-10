@@ -2,7 +2,7 @@
 O projeto é sobre uma solução, ao estilo Kanban Board, que visa entregar um bom visual, componentização e boa organização de código.
 
 ## Linguagens e bibliotecas utilizadas
-<br>Angular
+Angular
 <br>Angular Material
 <br>class-transformer (https://www.npmjs.com/package/class-transformer)
 <br>Dompurify (https://www.npmjs.com/package/dompurify)
@@ -13,6 +13,6 @@ O projeto é sobre uma solução, ao estilo Kanban Board, que visa entregar um b
 <br>Utilizar IE11 ou posterior (versão 11 descontinuada nesta versão do Angular) e Node 12.20.0 ou posterior.
 
 ## Como rodar o projeto
-<br>Clone o repositório do endereço https://github.com/rpizao/angular-kanban
+Clone o repositório do endereço https://github.com/rpizao/angular-kanban
 <br>Acesse a pasta FRONT e execute npm install
 <br>Execute npm start
