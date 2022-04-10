@@ -1,9 +1,9 @@
-import { Entity } from "./entidade";
-import { TipoCard } from "./enums/tipo-card";
+import { Entity } from "./entity";
+import { CardType } from "./enums/card-type";
 
 export interface Card extends Entity {
   titulo: string;
   conteudo: string;
-  lista: TipoCard;
-  somenteLeitura: boolean;
+  lista: CardType;
+  editavel: boolean;
 }

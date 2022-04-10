@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { AlertService } from 'src/app/customs/alerts/alert.service';
 import { HttpResourceService } from 'src/app/customs/http/http-resource.service';
 import { Card } from '../models/card';
-import { TipoCard } from '../models/enums/tipo-card';
-import { HashUtils } from '../utils/hash.utils';
+import { CardType } from '../models/enums/card-type';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -18,21 +17,26 @@ export class CardService extends HttpResourceService<Card> {
     super(client, alert, tokenService);
   }
 
-  get newInstance(): Card {
+  newInstance(): Card {
     return {
-      codigo: HashUtils.hash(new Date().getTime().toString()),
-      lista: TipoCard.ToDo
+      lista: CardType.ToDo,
+      editavel: true
     } as Card;
   }
 
   add(card: Card, sucesso: (card: Card) => void){
-    this.post(
-      CardService.CARD_URL,
-      {codigo: card.codigo, titulo: card.titulo, conteudo: card.conteudo},
-      sucesso);
+    this.post(CardService.CARD_URL, card, sucesso);
+  }
+
+  update(card: Card, sucesso: (card: Card) => void){
+    this.put(CardService.CARD_URL + '/' + card.id, card, sucesso);
   }
 
   list(sucesso: (cards: Card[]) => void){
     this.get(CardService.CARD_URL, sucesso);
+  }
+
+  remove(cardId: string, sucesso: (cards: Card[]) => void){
+    this.delete(CardService.CARD_URL + '/' + cardId, sucesso);
   }
 }

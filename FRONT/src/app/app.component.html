@@ -20,8 +20,10 @@
 
     <mat-card-content>
       <div *ngFor="let card of listaTodo; let i = index">
-        <app-card-readonly [data]="card" *ngIf="card.somenteLeitura"></app-card-readonly>
-        <app-card [data]="card" *ngIf="!card.somenteLeitura"></app-card>
+        <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
+        <ng-template #readonly>
+          <app-card-readonly [data]="card"></app-card-readonly>
+        </ng-template>
       </div>
     </mat-card-content>
 
@@ -39,8 +41,10 @@
 
     <mat-card-content>
       <div *ngFor="let card of listaDoing; let i = index">
-        <app-card-readonly [data]="card" *ngIf="card.somenteLeitura"></app-card-readonly>
-        <app-card [data]="card" *ngIf="!card.somenteLeitura"></app-card>
+        <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
+        <ng-template #readonly>
+          <app-card-readonly [data]="card"></app-card-readonly>
+        </ng-template>
       </div>
     </mat-card-content>
 
@@ -52,8 +56,10 @@
 
     <mat-card-content>
       <div *ngFor="let card of listaDone; let i = index">
-        <app-card-readonly [data]="card" *ngIf="card.somenteLeitura"></app-card-readonly>
-        <app-card [data]="card" *ngIf="!card.somenteLeitura"></app-card>
+        <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
+        <ng-template #readonly>
+          <app-card-readonly [data]="card"></app-card-readonly>
+        </ng-template>
       </div>
     </mat-card-content>
   </mat-card>

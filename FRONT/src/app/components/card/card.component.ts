@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Card } from 'src/app/models/card';
 import { CardService } from 'src/app/services/card.service';
 import { MessageService } from 'src/app/services/message/message.service';
+import { FormUtils } from 'src/app/utils/form.utils';
 
 @Component({
   selector: 'app-card',
@@ -37,7 +38,10 @@ export class CardComponent implements OnInit {
   }
 
   confirm(){
-    this.cardService.add(this.formulario.value, r => this.messageService.update({...r, codigo: this._data.codigo}));
+    if(FormUtils.isInvalid(this.formulario)) return;
+
+    const updated = {...this.formulario.value, lista: this._data.lista};
+    this.messageService.addOrUpdate({...updated});
   }
 
   cancel(){

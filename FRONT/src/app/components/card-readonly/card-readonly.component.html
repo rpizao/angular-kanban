@@ -1,7 +1,7 @@
 <mat-card class="card">
   <mat-card-title>
     {{data?.titulo}}
-    <button class="clickable right" matSuffix mat-icon-button aria-label="Editar">
+    <button class="clickable right" matSuffix mat-icon-button aria-label="Editar" (click)="edit()">
       <mat-icon>edit_note</mat-icon>
     </button>
   </mat-card-title>
@@ -9,13 +9,13 @@
     {{data?.conteudo}}
   </mat-card-content>
   <mat-card-actions>
-    <button class="normal clickable left" aria-label="Voltar para TODO">
+    <button *ngIf="hasPreviousOption()" class="normal clickable left" aria-label="Anterior" (click)="previous()">
       <mat-icon>restart_alt</mat-icon>
     </button>
-    <button class="danger clickable center" aria-label="Deletar">
+    <button class="danger clickable center" aria-label="Deletar" (click)="remove()">
       <mat-icon>delete</mat-icon>
     </button>
-    <button class="primary clickable right" aria-label="Deletar">
+    <button *ngIf="hasNextOption()" class="primary clickable right" aria-label="Próximo" (click)="next()">
       <mat-icon>start</mat-icon>
     </button>
   </mat-card-actions>
