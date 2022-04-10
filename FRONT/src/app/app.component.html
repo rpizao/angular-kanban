@@ -18,8 +18,8 @@
   <mat-card class="list todo">
     <mat-card-subtitle>To do</mat-card-subtitle>
 
-    <mat-card-content>
-      <div *ngFor="let card of listaTodo; let i = index">
+    <mat-card-content #todoList>
+      <div #todoItem *ngFor="let card of listaTodo; let i = index">
         <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
         <ng-template #readonly>
           <app-card-readonly [data]="card"></app-card-readonly>

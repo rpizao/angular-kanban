@@ -1,26 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { AfterContentChecked, AfterViewChecked, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Card } from './models/card';
 import { CardType } from './models/enums/card-type';
 import { CardService } from './services/card.service';
 import { Message, MessageService, MessageType } from './services/message/message.service';
+import { HashUtils } from './utils/hash.utils';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
 
-  constructor(private cardService: CardService, private messageService: MessageService) {}
+  @ViewChildren('todoItem', { read: ElementRef }) private todoListContainer?: QueryList<ElementRef>;
+
+  constructor(private cardService: CardService, private messageService: MessageService, private viewportScroller: ViewportScroller) {
+    this.loadingCardList();
+    this.messageService.onMessage().subscribe(message => this.stateChangeComponent(message));
+  }
+  ngAfterViewChecked(): void {
+    this.scrollToEnd();
+  }
 
   private _listaTodo: Card[] = [];
   private _listaDoing: Card[] = [];
   private _listaDone: Card[] = [];
 
   ngOnInit(): void {
-    this.loadingCardList();
 
-    this.messageService.onMessage().subscribe(message => this.stateChangeComponent(message));
   }
 
   get listaTodo(): Card[] {
@@ -36,7 +44,17 @@ export class AppComponent implements OnInit {
   }
 
   addTodo() {
-    this._listaTodo.push({...this.cardService.newInstance()});
+    this._listaTodo.push({...this.cardService.newInstance(), code: HashUtils.hash()});
+  }
+
+  ngAfterContentChecked(): void {
+
+  }
+
+  private scrollToEnd(){
+    if(!this.todoListContainer) return;
+    const lastElement = this.todoListContainer.last;
+    if(lastElement) lastElement.nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 
   private loadingCardList() {
@@ -47,17 +65,17 @@ export class AppComponent implements OnInit {
     });
   }
 
-  private clearCardEdition(card: Card) {
+  private clearCardEditionByCode(card: Card) {
     switch(card.lista){
-      case CardType.ToDo: this._listaTodo = this.removeListById(this._listaTodo, card.id); break;
-      case CardType.Doing: this._listaDoing = this.removeListById(this._listaDoing, card.id); break;
-      case CardType.Done: this._listaDone = this.removeListById(this._listaDone, card.id); break;
+      case CardType.ToDo: this._listaTodo = this.removeListByCode(this._listaTodo, card.code); break;
+      case CardType.Doing: this._listaDoing = this.removeListByCode(this._listaDoing, card.code); break;
+      case CardType.Done: this._listaDone = this.removeListByCode(this._listaDone, card.code); break;
     }
   }
 
   private cancelCardEdition(card: Card) {
     if(!card.id) {
-      this.clearCardEdition(card);
+      this.clearCardEditionByCode(card);
       return;
     }
     card.editavel = false;
@@ -81,9 +99,9 @@ export class AppComponent implements OnInit {
     return list.filter(i => i.lista == type);
   }
 
-  private removeListById(list: Card[], id: string): Card[] {
+  private removeListByCode(list: Card[], code: string): Card[] {
     if(!list) return [];
-    return list.filter(i => i.id != id);
+    return list.filter(i => i.code != code);
   }
 
   private stateChangeComponent(message: Message){

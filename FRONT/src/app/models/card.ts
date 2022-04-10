@@ -6,4 +6,7 @@ export interface Card extends Entity {
   conteudo: string;
   lista: CardType;
   editavel: boolean;
+
+  // Campo usado para identificar o Card não persistido na view.
+  code: string;
 }
