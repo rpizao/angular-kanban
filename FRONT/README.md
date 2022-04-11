@@ -23,6 +23,6 @@ Abra o console no diretório do projeto e execute <pre>docker-compose down</pre>
 ## Rodando os testes
 Acesse a pasta do projeto FRONT e execute <pre>npm test</pre>
 
-## Cards carregados como exemplo
-Carreguei alguns cards para facilitar a visualização do componente e as suas funcionalidades.
-<br> A carga ocorre uma única vez, logo após a recuperação do token, e só se a "base" de cards estiver vazia.
+## Cards para demonstração
+Visando facilitar a visualização e as funcionalidades presentes no componente, alguns cards são carregados na inicialização da aplicação.
+<br> A carga ocorre uma única vez, logo após a recuperação do token no back-end, e só se a "base" de cards estiver vazia.
