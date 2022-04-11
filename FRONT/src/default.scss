@@ -2,6 +2,12 @@
   display: flex;
 }
 
+.side-by-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .side-by-side:only-child {
   flex: 1;
   margin: 1em;

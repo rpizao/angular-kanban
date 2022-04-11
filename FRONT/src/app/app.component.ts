@@ -12,7 +12,7 @@ import { HashUtils } from './utils/hash.utils';
 })
 export class AppComponent {
 
-  @ViewChildren('todoItem', { read: ElementRef }) private todoListContainer?: QueryList<ElementRef>;
+  @ViewChildren('todoItem', { read: ElementRef }) private todoListItems?: QueryList<ElementRef>;
 
   constructor(private cardService: CardService, private messageService: MessageService, private changeDetectorRef: ChangeDetectorRef) {
     this.loadingCardList();
@@ -44,8 +44,8 @@ export class AppComponent {
   private scrollToEnd(){
     this.changeDetectorRef.detectChanges();
 
-    if(!this.todoListContainer) return;
-    const lastElement = this.todoListContainer.last;
+    if(!this.todoListItems) return;
+    const lastElement = this.todoListItems.last;
     if(lastElement) lastElement.nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 

@@ -14,5 +14,5 @@ Angular
 
 ## Como rodar o projeto
 Clone o repositório do endereço https://github.com/rpizao/angular-kanban
-<br>Acesse a pasta FRONT e execute npm install
-<br>Execute npm start
+<br>Abra o console no diretório do projeto e execute <pre>docker-compose up -d --build</pre>
+<br>Para acessar o projeto, entre na URL http://localhost:4200

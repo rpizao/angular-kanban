@@ -1,25 +1,48 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { Card } from 'src/app/models/card';
+import { CardService } from 'src/app/services/card.service';
 import { CardComponent } from './card.component';
 
 describe('CardComponent', () => {
   let component: CardComponent;
   let fixture: ComponentFixture<CardComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
-    })
-    .compileComponents();
-  });
+  beforeEach(
+		waitForAsync(() => {
+			TestBed.configureTestingModule({
+				imports: [HttpClientModule, MatDialogModule, ReactiveFormsModule],
+				declarations: [CardComponent],
+				providers: [CardService]
+			}).compileComponents();
+		})
+	);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(CardComponent);
+		component = fixture.componentInstance;
+	});
 
-  it('should create', () => {
+  it('Componente criado', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Submit de um formulário inválido', () => {
+    component.confirm();
+    expect(component.formulario.invalid).toBeTrue();
+  });
+
+  it('Submit de um formulário válido', () => {
+    component.formulario.patchValue({titulo: 'Titulo', conteudo: 'Conteudo'} as Card);
+    component.confirm();
+    expect(component.formulario.valid).toBeTrue();
+  });
+
+  it('Cancela a edição/inclusão', () => {
+    component.formulario.patchValue({titulo: 'Titulo', conteudo: 'Conteudo'} as Card);
+    component.cancel();
+    expect(component.formulario.valid).toBeTrue();
   });
 });

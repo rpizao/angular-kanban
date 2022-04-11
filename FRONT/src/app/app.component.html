@@ -15,8 +15,8 @@
   <mat-card class="list todo">
     <mat-card-subtitle>To do</mat-card-subtitle>
 
-    <mat-card-content #todoList>
-      <div #todoItem *ngFor="let card of listaTodo; let i = index">
+    <mat-card-content>
+      <div class="todoItem" *ngFor="let card of listaTodo; let i = index">
         <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
         <ng-template #readonly>
           <app-card-readonly [data]="card"></app-card-readonly>
@@ -25,7 +25,7 @@
     </mat-card-content>
 
     <div class="add-card">
-      <button class="clickable" matSuffix mat-icon-button aria-label="Adicionar" (click)="addTodo()">
+      <button class="add clickable" matSuffix mat-icon-button aria-label="Adicionar" (click)="addTodo()">
         <mat-icon aria-hidden="false">add</mat-icon>
         Adicionar novo
       </button>
@@ -37,7 +37,7 @@
     <mat-card-subtitle>Doing</mat-card-subtitle>
 
     <mat-card-content>
-      <div *ngFor="let card of listaDoing; let i = index">
+      <div class="doingItem" *ngFor="let card of listaDoing; let i = index">
         <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
         <ng-template #readonly>
           <app-card-readonly [data]="card"></app-card-readonly>
@@ -52,7 +52,7 @@
     <mat-card-subtitle>Done</mat-card-subtitle>
 
     <mat-card-content>
-      <div *ngFor="let card of listaDone; let i = index">
+      <div class="doneItem" *ngFor="let card of listaDone; let i = index">
         <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
         <ng-template #readonly>
           <app-card-readonly [data]="card"></app-card-readonly>

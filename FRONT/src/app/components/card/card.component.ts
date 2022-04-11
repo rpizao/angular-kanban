@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Card } from 'src/app/models/card';
-import { CardService } from 'src/app/services/card.service';
 import { MessageService } from 'src/app/services/message/message.service';
 import { FormUtils } from 'src/app/utils/form.utils';
 
@@ -17,7 +16,7 @@ export class CardComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder, private cardService: CardService, private messageService: MessageService) {
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private messageService: MessageService) {
     this.formulario = this.fb.group({
       titulo: ['', Validators.required],
       conteudo: ['', Validators.required]
