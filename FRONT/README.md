@@ -2,12 +2,12 @@
 O projeto é sobre uma solução, ao estilo Kanban Board, que visa entregar um bom visual, componentização e boa organização de código.
 
 ## Linguagens e bibliotecas utilizadas
-Angular
-<br>Angular Material
-<br>class-transformer (https://www.npmjs.com/package/class-transformer)
-<br>Dompurify (https://www.npmjs.com/package/dompurify)
-<br>Ngx-markdown (https://www.npmjs.com/package/ngx-markdown)
-<br>ts-md5 (https://www.npmjs.com/package/ts-md5)
+Angular | 13.3.2
+<br>Angular Material | 13.3.2
+<br>class-transformer | 0.5.1 | (https://www.npmjs.com/package/class-transformer)
+<br>Dompurify | 2.3.6 | (https://www.npmjs.com/package/dompurify)
+<br>Ngx-markdown | 13.1.0 | (https://www.npmjs.com/package/ngx-markdown)
+<br>ts-md5 | 1.2.11 | (https://www.npmjs.com/package/ts-md5)
 
 **Importante**
 <br>Utilizar IE11 ou posterior (versão 11 descontinuada nesta versão do Angular) e Node 12.20.0 ou posterior.
