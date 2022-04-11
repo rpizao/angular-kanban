@@ -12,6 +12,12 @@ import { HashUtils } from './utils/hash.utils';
 })
 export class AppComponent {
 
+  private static readonly NAVIGATION_LIST = new Map<CardType, {previous?: CardType, next?: CardType}>([
+    [CardType.ToDo, { next: CardType.Doing }],
+    [CardType.Doing, { previous: CardType.ToDo, next: CardType.Done }],
+    [CardType.Done, { previous: CardType.Doing }]
+  ]);
+
   @ViewChildren('todoItem', { read: ElementRef }) private todoListItems?: QueryList<ElementRef>;
 
   constructor(private cardService: CardService, private messageService: MessageService, private changeDetectorRef: ChangeDetectorRef) {
@@ -100,7 +106,19 @@ export class AppComponent {
       case MessageType.ADD_OR_UPDATE: this.addOrUpdateAndRefreshList(message.data as Card); break;
       case MessageType.EDIT: this.openCardToEdition(message.data as Card); break;
       case MessageType.DELETE: this.deleteAndRefreshList(message.data as Card); break;
+      case MessageType.PREVIOUS: this.goToPrevious(message.data as Card); break;
+      case MessageType.NEXT: this.goToNext(message.data as Card); break;
     }
+  }
+
+  private goToPrevious(card: Card) {
+    let previous = AppComponent.NAVIGATION_LIST.get(card.lista)?.previous;
+    if(previous) this.addOrUpdateAndRefreshList({...card, lista: previous});
+  }
+
+  private goToNext(card: Card) {
+    let next = AppComponent.NAVIGATION_LIST.get(card.lista)?.next;
+    if(next) this.addOrUpdateAndRefreshList({...card, lista: next});
   }
 
 }

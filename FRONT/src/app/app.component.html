@@ -17,9 +17,9 @@
 
     <mat-card-content>
       <div class="todoItem" *ngFor="let card of listaTodo; let i = index">
-        <app-card [data]="card" *ngIf="card.editavel; else readonly"></app-card>
+        <app-card class="editable" [data]="card" *ngIf="card.editavel; else readonly"></app-card>
         <ng-template #readonly>
-          <app-card-readonly [data]="card"></app-card-readonly>
+          <app-card-readonly class="readonly" [data]="card"></app-card-readonly>
         </ng-template>
       </div>
     </mat-card-content>

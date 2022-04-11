@@ -10,12 +10,6 @@ import { MessageService } from 'src/app/services/message/message.service';
 })
 export class CardReadonlyComponent implements OnInit {
 
-  private static readonly NAVIGATION_LIST = new Map<CardType, {previous?: CardType, next?: CardType}>([
-    [CardType.ToDo, { next: CardType.Doing }],
-    [CardType.Doing, { previous: CardType.ToDo, next: CardType.Done }],
-    [CardType.Done, { previous: CardType.Doing }]
-  ]);
-
   @Input()
   data: Card | undefined;
 
@@ -24,22 +18,12 @@ export class CardReadonlyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private getPrevious(): CardType | undefined {
-    if(!this.data) return undefined;
-    return CardReadonlyComponent.NAVIGATION_LIST.get(this.data.lista)?.previous;
-  }
-
-  private getNext(): CardType | undefined {
-    if(!this.data) return undefined;
-    return CardReadonlyComponent.NAVIGATION_LIST.get(this.data.lista)?.next;
-  }
-
   hasPreviousOption(): boolean {
-    return this.getPrevious() != null;
+    return this.data?.lista != CardType.ToDo;
   }
 
   hasNextOption(): boolean {
-    return this.getNext() != null;
+    return this.data?.lista != CardType.Done;
   }
 
   remove() {
@@ -47,11 +31,11 @@ export class CardReadonlyComponent implements OnInit {
   }
 
   previous() {
-    this.messageService.addOrUpdate({...this.data, lista: this.getPrevious()});
+    this.messageService.previous({...this.data});
   }
 
   next() {
-    this.messageService.addOrUpdate({...this.data, lista: this.getNext()});
+    this.messageService.next({...this.data});
   }
 
   edit() {

@@ -1,16 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardReadonlyComponent } from './card-readonly.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Card } from 'src/app/models/card';
 import { CardType } from 'src/app/models/enums/card-type';
+import { CardService } from 'src/app/services/card.service';
+import { CardReadonlyComponent } from './card-readonly.component';
 
 describe('CardReadonlyComponent', () => {
   let component: CardReadonlyComponent;
@@ -19,13 +14,8 @@ describe('CardReadonlyComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ CardReadonlyComponent ],
-      imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatCardModule, MatIconModule, MatInputModule, MatDialogModule, MatToolbarModule, // Material Modules
-        ReactiveFormsModule,
-        HttpClientTestingModule
-      ],
+      imports: [HttpClientModule, MatDialogModule, ReactiveFormsModule],
+      providers: [CardService]
     });
   });
 

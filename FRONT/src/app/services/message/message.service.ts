@@ -22,6 +22,14 @@ export class MessageService {
     this.subject.next({ operation: MessageType.EDIT, data: entity });
   }
 
+  previous<T>(entity: T) {
+    this.subject.next({ operation: MessageType.PREVIOUS, data: entity });
+  }
+
+  next<T>(entity: T) {
+    this.subject.next({ operation: MessageType.NEXT, data: entity });
+  }
+
   clearMessages() {
       this.subject.next();
   }
@@ -37,5 +45,5 @@ export interface Message {
 }
 
 export enum MessageType {
-  CLEAR, ADD_OR_UPDATE, EDIT, DELETE
+  CLEAR, ADD_OR_UPDATE, EDIT, DELETE, PREVIOUS, NEXT
 }
