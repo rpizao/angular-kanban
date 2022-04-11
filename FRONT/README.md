@@ -22,7 +22,7 @@ Clone o repositório do endereço **https://github.com/rpizao/angular-kanban**
 Abra o console no diretório do projeto e execute <pre>docker-compose down</pre>
 
 ## Rodando os testes
-Acesse a pasta do projeto FRONT e execute **npm test**
+Acesse a pasta do projeto FRONT e execute <pre>npm test</pre>
 
 ## Cards carregados como exemplo
 Carreguei alguns cards para facilitar a visualização do componente e as suas funcionalidades.
