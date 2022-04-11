@@ -8,9 +8,8 @@ Angular
 <br>Dompurify (https://www.npmjs.com/package/dompurify)
 <br>Ngx-markdown (https://www.npmjs.com/package/ngx-markdown)
 <br>ts-md5 (https://www.npmjs.com/package/ts-md5)
-<br>ts-md5 (https://www.npmjs.com/package/ts-md5)
 
-*Importante*
+**Importante**
 <br>Utilizar IE11 ou posterior (versão 11 descontinuada nesta versão do Angular) e Node 12.20.0 ou posterior.
 
 ## Iniciar os serviços
