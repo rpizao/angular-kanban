@@ -1,0 +1,15 @@
+version: '3'
+services:
+    kanban-back:
+        build: ./BACK
+        container_name: kanban-back
+        ports:
+            - 5000:5000
+
+    kanban-front:
+        build: ./FRONT
+        container_name: kanban-front
+        ports:
+            - 4200:80
+        links:
+            - kanban-back
