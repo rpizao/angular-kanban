@@ -52,7 +52,7 @@ export abstract class HttpResourceService<T extends Entity> {
         }
 
         console.log(error);
-        if(!fail) this.alert.warn("Ocorreu um erro!<br>Caso se repita, entre em contato com o responsável.")
+        if(!fail) this.alert.error("Ocorreu um erro! Caso se repita, entre em contato com o responsável.")
         else fail(error);
       }
     );

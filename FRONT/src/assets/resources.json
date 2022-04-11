@@ -1,0 +1,67 @@
+[
+  {
+    "titulo": "Doodle",
+	"lista": 1,
+    "conteudo": ["Card com imagem associada.",
+        "![Imagem animado](https://mir-s3-cdn-cf.behance.net/project_modules/disp/1f276631612879.56589b45922ee.gif)"]
+  },
+  {
+    "titulo": "Lorem ipsum",
+	"lista": 1,
+    "conteudo": ["What is Lorem Ipsum?",
+    "-----",
+    "**Lorem Ipsum** is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the _1500s_",
+    "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into",
+    "electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,",
+    "and more recently with desktop publishing software like **Aldus PageMaker** including versions of Lorem Ipsum."]
+  },
+  {
+    "titulo": "Lorem Ipsum",
+	"lista": 1,
+    "conteudo": ["_Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..._",
+	"'There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...'",
+    "-----",
+    " - Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+	" - Nulla eleifend urna ornare, aliquam sapien eget, iaculis augue.",
+	" - Nam id massa consectetur, elementum sem in, malesuada lacus.",
+	" - Quisque nec mauris ac nunc tempor viverra.",
+	" - Curabitur aliquam nibh quis purus luctus dapibus.",
+	" - Sed dictum felis eget tellus blandit, non convallis leo rutrum.",
+	" - Donec quis urna eu quam aliquam accumsan et et metus.",
+	" - Mauris hendrerit libero a est feugiat eleifend.",
+	" - Mauris non sem ac augue dictum molestie.",
+	" - Praesent sed sapien nec odio accumsan porttitor quis sit amet tellus.",
+	" - Vivamus posuere velit a eros varius, quis condimentum mauris scelerisque.",
+	" - Integer vel dui molestie, dapibus ligula at, porttitor massa.",
+	" - Nam pharetra quam ac lectus molestie, sed pellentesque dui viverra.",
+	" - Duis quis velit fringilla sem rutrum tincidunt.",
+	" - Aliquam finibus lectus sit amet tincidunt iaculis.",
+	" - Duis lacinia diam ut pulvinar maximus.",
+	" - Morbi sollicitudin velit congue, vulputate tellus tempor, semper nisl.",
+	" - Sed placerat ipsum in magna commodo lobortis.",
+	" - Aenean vitae tellus sit amet ipsum bibendum dapibus quis non metus.",
+	" - Morbi eu ante feugiat, lobortis urna eleifend, posuere enim.",
+	" - Nam ultrices felis vitae pretium pulvinar."]
+  },
+  {
+	  "titulo": "Fundamentos da agilidade",
+	  "conteudo": ["_Individuals and interactions over processes and tools. Working software over comprehensive documentation. Customer collaboration over contract negotiation..._ [Manifesto Ágil](https://assets.uits.iu.edu/pdf/Agile-Manifesto.pdf)"],
+	  "lista": 2
+  },
+  {
+	  "titulo": "Futurist",
+	  "conteudo": ["![Futurist Gif](https://lh3.googleusercontent.com/Dze8DfHhM9LbORvrpW1FQmOSlwuzsB7Y1GN7MSOAIIwlx7L_SdT2dYmTm10c7I_7_H9cj1Y_I7eHn5LsIy1NghD8ZBUFk5ZyD9yUnQ=w600)"],
+	  "lista": 3
+  },
+  {
+	  "titulo": "Constante",
+	  "conteudo": ["``` javascript", "const language = 'typescript';", "``` "],
+	  "lista": 2
+  },
+  {
+	  "titulo": "Lorem Ipsum",
+	  "conteudo": ["orem ipsum dolor sit amet, consectetur adipiscing elit. In dapibus cursus ante, quis imperdiet felis placerat vitae. Vivamus elit magna, malesuada non nulla ut, ultricies imperdiet libero."],
+	  "lista": 3
+  }
+
+]

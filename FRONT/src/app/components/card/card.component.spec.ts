@@ -39,10 +39,4 @@ describe('CardComponent', () => {
     component.confirm();
     expect(component.formulario.valid).toBeTrue();
   });
-
-  it('Cancela a edição/inclusão', () => {
-    component.formulario.patchValue({titulo: 'Titulo', conteudo: 'Conteudo'} as Card);
-    component.cancel();
-    expect(component.formulario.valid).toBeTrue();
-  });
 });

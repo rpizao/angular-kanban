@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { AlertService } from './customs/alerts/alert.service';
+import { BusinessError } from './exceptions/business.error';
 import { Card } from './models/card';
 import { CardType } from './models/enums/card-type';
 import { CardService } from './services/card.service';
@@ -18,9 +20,10 @@ export class AppComponent {
     [CardType.Done, { previous: CardType.Doing }]
   ]);
 
-  @ViewChildren('todoItem', { read: ElementRef }) private todoListItems?: QueryList<ElementRef>;
+  @ViewChildren('todoCard', { read: ElementRef }) private todoListItems?: QueryList<ElementRef>;
 
-  constructor(private cardService: CardService, private messageService: MessageService, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private cardService: CardService, private messageService: MessageService,
+    private changeDetectorRef: ChangeDetectorRef, private alert: AlertService) {
     this.loadingCardList();
     this.messageService.onMessage().subscribe(message => this.stateChangeComponent(message));
   }
@@ -73,7 +76,7 @@ export class AppComponent {
 
   private openCardToEdition(card: Card) {
     card.editavel = true;
-    this.scrollToEnd();
+    if(!card.id) this.scrollToEnd();
   }
 
   private cancelCardEdition(card: Card) {
@@ -102,7 +105,7 @@ export class AppComponent {
 
   private stateChangeComponent(message: Message){
     switch(message.operation){
-      case MessageType.CLEAR: this.cancelCardEdition(message.data as Card); break;
+      case MessageType.CANCEL: this.cancelCardEdition(message.data as Card); break;
       case MessageType.ADD_OR_UPDATE: this.addOrUpdateAndRefreshList(message.data as Card); break;
       case MessageType.EDIT: this.openCardToEdition(message.data as Card); break;
       case MessageType.DELETE: this.deleteAndRefreshList(message.data as Card); break;
@@ -113,12 +116,26 @@ export class AppComponent {
 
   private goToPrevious(card: Card) {
     let previous = AppComponent.NAVIGATION_LIST.get(card.lista)?.previous;
-    if(previous) this.addOrUpdateAndRefreshList({...card, lista: previous});
+    if(!previous) {
+      this.alert.error(`Erro ao mover o card ${card.titulo} para próxima anterior.`);
+
+      throw new BusinessError(
+        `Card ${card.titulo} não pode retornar para lista anterior.
+        Provavelmente, a lista não existe (o card está na lista de Todo) ou o tipo informado é desconhecido.`);
+    }
+    this.addOrUpdateAndRefreshList({...card, lista: previous});
   }
 
   private goToNext(card: Card) {
     let next = AppComponent.NAVIGATION_LIST.get(card.lista)?.next;
-    if(next) this.addOrUpdateAndRefreshList({...card, lista: next});
+    if(!next) {
+      this.alert.error(`Erro ao mover o card ${card.titulo} para próxima lista.`);
+
+      throw new BusinessError(
+        `Card ${card.titulo} não pode seguir para próxima lista.
+        Provavelmente, a lista não existe (o card está na lista de Done) ou o tipo informado é desconhecido.`);
+    }
+    this.addOrUpdateAndRefreshList({...card, lista: next});
   }
 
 }

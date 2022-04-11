@@ -6,6 +6,8 @@ import { Card } from '../models/card';
 import { CardType } from '../models/enums/card-type';
 import { TokenService } from './token.service';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +18,7 @@ export class CardService extends HttpResourceService<Card> {
   constructor(client: HttpClient, alert: AlertService, tokenService: TokenService){
     super(client, alert, tokenService);
   }
+
 
   newInstance(): Card {
     return {

@@ -9,7 +9,7 @@
     <markdown [data]="data?.conteudo"></markdown>
   </mat-card-content>
   <mat-card-actions>
-    <button *ngIf="hasPreviousOption()" class="normal clickable left" aria-label="Anterior" (click)="previous()">
+    <button *ngIf="hasPreviousOption()" class="previous clickable left" aria-label="Anterior" (click)="previous()">
       <mat-icon>restart_alt</mat-icon>
     </button>
     <button class="danger clickable center" aria-label="Deletar" (click)="remove()">

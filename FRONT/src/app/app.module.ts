@@ -17,6 +17,8 @@ import { TokenService } from './services/token.service';
 import { TokenIntercept } from './intercepts/token-intercept';
 import { MessageService } from './services/message/message.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AlertService } from './customs/alerts/alert.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatCardModule, MatIconModule, MatInputModule, MatDialogModule, MatToolbarModule, // Material Modules
+    MatCardModule, MatIconModule, MatInputModule, MatDialogModule, MatToolbarModule, MatSnackBarModule, // Material Modules
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }), // Markup Modules
     ReactiveFormsModule
@@ -38,7 +40,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
       useClass: TokenIntercept,
       multi: true
     },
-    MessageService
+    MessageService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

@@ -44,7 +44,7 @@ export class CardComponent implements OnInit {
   }
 
   cancel(){
-    this.messageService.clear(this._data);
+    this.messageService.cancel(this._data);
   }
 
 }
@@ -68,7 +68,6 @@ export class MarkdownTipsDialog {
   Negrito
   Quebre os ovos **cuidadosamente**.
 
-
   Ênfase
   Bata os ovos *vigorosamente*.
 
@@ -84,7 +83,6 @@ export class MarkdownTipsDialog {
 
   Imagens
   ![O Prato Terminado](https://example.com/eggs.png)
-
 
   Códigos fonte
   \`\`\` javascript

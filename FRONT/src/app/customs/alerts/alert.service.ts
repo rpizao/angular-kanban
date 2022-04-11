@@ -1,49 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
-
-import { Alert, AlertType } from './alert.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class AlertService {
-    private subject = new Subject<Alert>();
-    private defaultId = 'default-alert';
-    // Trocar o default, se necessário.
-    options = {
-      autoClose: false,
-      keepAfterRouteChange: false
-    };
+    constructor(private _snackBar: MatSnackBar){}
 
-    // enable subscribing to alerts observable
-    onAlert(id = this.defaultId): Observable<Alert> {
-        return this.subject.asObservable().pipe(filter(x => x && x.id === id));
+    success(message: string) {
+        this.openSnackBar(message, AlertType.Success);
     }
 
-    // convenience methods
-    success(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Success, message }));
+    error(message: string) {
+      this.openSnackBar(message, AlertType.Error);
     }
 
-    error(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Error, message }));
+    info(message: string) {
+      this.openSnackBar(message, AlertType.Info);
     }
 
-    info(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Info, message }));
+    warn(message: string) {
+      this.openSnackBar(message, AlertType.Warning);
     }
 
-    warn(message: string, options?: any) {
-        this.alert(new Alert({ ...options, type: AlertType.Warning, message }));
+    openSnackBar(message: string, type: AlertType) {
+      this._snackBar.open(message, "OK", {
+        duration: 5000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'right',
+        panelClass: [AlertType[type].toLowerCase()]
+     });
     }
 
-    // main alert method
-    alert(alert: Alert) {
-        alert.id = alert.id || this.defaultId;
-        this.subject.next(alert);
-    }
+}
 
-    // clear alerts
-    clear(id = this.defaultId) {
-        this.subject.next(new Alert({ id }));
-    }
+export enum AlertType {
+  Success,
+  Error,
+  Info,
+  Warning
 }

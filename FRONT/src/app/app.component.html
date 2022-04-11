@@ -16,7 +16,7 @@
     <mat-card-subtitle>To do</mat-card-subtitle>
 
     <mat-card-content>
-      <div class="todoItem" *ngFor="let card of listaTodo; let i = index">
+      <div #todoCard class="todoItem" *ngFor="let card of listaTodo; let i = index">
         <app-card class="editable" [data]="card" *ngIf="card.editavel; else readonly"></app-card>
         <ng-template #readonly>
           <app-card-readonly class="readonly" [data]="card"></app-card-readonly>
@@ -26,8 +26,8 @@
 
     <div class="add-card">
       <button class="add clickable" matSuffix mat-icon-button aria-label="Adicionar" (click)="addTodo()">
-        <mat-icon aria-hidden="false">add</mat-icon>
-        Adicionar novo
+        Adicionar cartão
+        <mat-icon aria-hidden="false">add_circle_outline</mat-icon>
       </button>
     </div>
 

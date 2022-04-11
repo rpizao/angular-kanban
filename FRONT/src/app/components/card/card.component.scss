@@ -1,6 +1,10 @@
 @import url(../card-default.scss);
 
 .card.editable {
+  textarea {
+    min-height: 100px;
+  }
+
   .help {
     position: absolute;
     bottom: 35px;
@@ -10,6 +14,11 @@
   .help mat-icon {
     vertical-align: middle;
     font-size: 1.5em;
+  }
+
+  .help button {
+    color: darkgrey;
+    font-size: 1.1em;
   }
 
   mat-form-field {

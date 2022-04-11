@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AlertService } from '../customs/alerts/alert.service';
+import { CardService } from './card.service';
+import { SampleService } from './sample.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { AlertService } from '../customs/alerts/alert.service';
 export class TokenService {
   private static readonly TOKEN = "token";
 
-  constructor(private client: HttpClient, private alert: AlertService) { }
+  constructor(private client: HttpClient, private alert: AlertService, private sampleService: SampleService) { }
 
   getToken(): any {
     return localStorage.getItem(TokenService.TOKEN);
@@ -25,7 +27,9 @@ export class TokenService {
     ).subscribe(
       token => {
         this.setToken(token);
-        sucesso();
+
+        // Carregar alguns cards de exemplo no primeiro login.
+        this.sampleService.loadingSamples().then(r => sucesso());
       },
       error => {
         console.log(error);
@@ -33,16 +37,4 @@ export class TokenService {
       }
     );
   }
-
-  /* async recuperarToken() {
-    try {
-      const token = await this.client.post(
-        environment.apiBaseUrl + "/login", { "login":"letscode", "senha":"lets@123"}
-      ).toPromise();
-      this.setToken(token);
-    } catch(error) {
-      console.log(error);
-      this.alert.error("Erro ao recuperar o token de acesso.")
-    }
-  } */
 }

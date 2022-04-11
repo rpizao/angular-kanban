@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@500&display=swap');
 @import url(default.scss);
 
 html, body { height: 90%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; scroll-padding: 10px; }
+body { background-color: #dbdbdb; }
 main {
   margin: 82px auto 32px;
   padding: 0 16px;
@@ -12,6 +13,7 @@ textarea { resize: none !important; }
 
 * {
   scroll-behavior: smooth;
+  font-family: 'Anek Tamil', sans-serif;
 }
 
 // TODO: Opção de código para o tema escuro?
@@ -24,8 +26,63 @@ textarea { resize: none !important; }
   @include theme;
 }
 .danger {
-  @include theme($theme: Red);
+  @include theme($theme: rgb(214, 27, 27));
 }
 .primary {
-  @include theme($theme: Blue);
+  @include theme($theme: rgb(21, 95, 169));
+}
+
+.warning{
+  padding: 20px;
+  background-color: darkorange;
+  color: white;
+
+  button {
+    color: white;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  padding-left: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: lightgrey;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: darkgray;
+}
+
+.error{
+  padding: 20px;
+  background-color: DarkRed;
+  color: white;
+
+  button {
+    color: white;
+  }
+}
+
+.info{
+  padding: 20px;
+  background-color: darkblue;
+  color: white;
+
+  button {
+    color: white;
+  }
+}
+
+.success{
+  padding: 20px;
+  background-color: darkgreen;
+  color: white;
+
+  button {
+    color: white;
+  }
 }

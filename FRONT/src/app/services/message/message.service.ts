@@ -6,8 +6,8 @@ import { Entity } from 'src/app/models/entity';
 export class MessageService {
   private subject = new Subject<Message>();
 
-  clear<T>(entity: T) {
-    this.subject.next({ operation: MessageType.CLEAR, data: entity });
+  cancel<T>(entity: T) {
+    this.subject.next({ operation: MessageType.CANCEL, data: entity });
   }
 
   addOrUpdate<T>(entity: T) {
@@ -45,5 +45,5 @@ export interface Message {
 }
 
 export enum MessageType {
-  CLEAR, ADD_OR_UPDATE, EDIT, DELETE, PREVIOUS, NEXT
+  CANCEL, ADD_OR_UPDATE, EDIT, DELETE, PREVIOUS, NEXT
 }

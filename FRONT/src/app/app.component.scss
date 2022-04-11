@@ -50,14 +50,17 @@
   width: 30%;
   min-width: 275px;
   max-width: 400px;
+  background: rgb(245, 245, 245);
+  border-radius: 5px;
 }
 
 .list > mat-card-subtitle {
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 0.5em;
   width: fit-content;
   color: white;
   font-weight: 500;
+  font-size: larger;
 }
 
 .list > mat-card-content {
@@ -66,47 +69,37 @@
 }
 
 .list.todo {
-  background: #e0e4e3;
+  border-top: 5px solid rgb(137, 134, 134);
 
   mat-card-subtitle {
-    background: darkgray;
+    background: rgb(137, 134, 134);
   }
 }
 
 .list.doing {
-  background: lightgreen;
+  border-top: 5px solid rgb(91, 150, 91);
 
   mat-card-subtitle {
-    background: darkseagreen;
+    background: rgb(91, 150, 91);
   }
 }
 
 .list.done {
-  background: lightblue;
+  border-top: 5px solid rgb(25, 118, 210);
 
   mat-card-subtitle {
-    background: blue;
+    background: rgb(25, 118, 210);
   }
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-  padding-left: 0.5em;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 3px;
-  background: lightgrey;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 2px;
-  background: darkgray;
 }
 
 .add-card {
   text-align: center;
   padding: 1em 0 1em 0;
+}
+
+.add-card button {
+  color: grey;
+  font-size: 1.1em;
 }
 
 .add-card mat-icon {
